@@ -1,0 +1,25 @@
+syntax = "proto3";
+package user;
+
+service User {
+    // Get all users with filter
+    rpc GetUsers(UserFilter) returns (stream UserRequest) {}
+    // Create a new user.
+    rpc CreateUser(UserRequest) returns (UserResponse) {}
+}
+
+message UserRequest {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message UserResponse {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message UserFilter {
+    string name = 1;
+}
